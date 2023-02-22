@@ -1,8 +1,11 @@
+import './index.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
+import Caclulator from './pages/Caclulator';
 import Home from './pages/Home';
 
 const router = createBrowserRouter([
@@ -14,6 +17,10 @@ const router = createBrowserRouter([
         index: true,
         path: '/',
         element: <Home />,
+      },
+      {
+        path: 'calculator',
+        element: <Caclulator />,
       },
     ],
   },
