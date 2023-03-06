@@ -1,5 +1,23 @@
 import React, { useState } from 'react';
 
+//TEST CODE OF Calculator
+// const calc = (command: Command, a: number, b: number): number => {
+//   switch (command) {
+//     case '+':
+//       return a + b;
+//     case '-':
+//       return a - b;
+//     case '*':
+//       return a * b;
+//     case '/':
+//       return a / b;
+//     case '%':
+//       return a % b;
+//     default:
+//       return 0;
+//   }
+// };
+
 export default function Caclulator() {
   type Command = '+' | '-' | '*' | '/' | '%' | string;
   const [result, setResult] = useState(0);

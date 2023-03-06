@@ -8,6 +8,9 @@ function App() {
         <Link to={'/'} className="font-bold">
           home
         </Link>
+        <Link to={'/map'} className="font-bold">
+          map
+        </Link>
       </div>
       <Outlet />
     </div>
