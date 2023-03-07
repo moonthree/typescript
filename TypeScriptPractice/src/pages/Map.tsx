@@ -1,5 +1,5 @@
 import { GoogleMap, LoadScript, Marker, Polyline } from '@react-google-maps/api';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 interface LatLng {
   lat: number;
@@ -31,6 +31,7 @@ const options = {
 };
 
 const Map: React.FC = () => {
+  const googleMapApiKey: string = import.meta.env.VITE_APP_GOOGLE_MAP_API as string;
   const [path, setPath] = useState<LatLng[]>([
     { lat: 37.565643683342, lng: 126.95524147826 },
     { lat: 37.665643683342, lng: 126.85524147826 },
@@ -38,7 +39,11 @@ const Map: React.FC = () => {
     { lat: 37.365643683342, lng: 126.99524147826 },
   ]);
   const handleMarkerDragEnd = (index: number, event: google.maps.MapMouseEvent) => {
-    const latLng = event.latLng.toJSON();
+    const latLng = event.latLng?.toJSON();
+    if (!latLng) {
+      // handle the case where latLng is null or undefined
+      return;
+    }
     const newPath = [...path];
     newPath[index] = { lat: latLng.lat, lng: latLng.lng };
     setPath(newPath);
@@ -47,7 +52,7 @@ const Map: React.FC = () => {
 
   return (
     <div className="flex">
-      <LoadScript googleMapsApiKey="AIzaSyDZ4QOEeNhuRFxKXgBnvifgL8Qn_v7ZHBs">
+      <LoadScript googleMapsApiKey={googleMapApiKey}>
         <GoogleMap zoom={18} center={center} mapContainerStyle={containerStyle}>
           {path.map((coordinates, index) => (
             <Marker
@@ -86,20 +91,5 @@ const Map: React.FC = () => {
     </div>
   );
 };
-
-// export default Map;
-
-// const Map: React.FC<MapProps> = ({ center, zoom }) => {
-//   const center2 = useMemo(() => ({ lat: 12.345, lng: 678.91 }), []);
-//   return (
-//     <div style={{ height: '100vh', width: '100%' }}>
-//       <LoadScript googleMapsApiKey={`AIzaSyDZ4QOEeNhuRFxKXgBnvifgL8Qn_v7ZHBs`}>
-//         <GoogleMap zoom={zoom} center={center} mapContainerClassName="map-container">
-//           <MarkerF position={center2} />
-//         </GoogleMap>
-//       </LoadScript>
-//     </div>
-//   );
-// };
 
 export default Map;

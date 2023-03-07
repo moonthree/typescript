@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
 import Caclulator from './pages/Caclulator';
+import Doit from './pages/Doit';
 import Home from './pages/Home';
 import Map from './pages/Map';
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: 'map',
         element: <Map />,
+      },
+      {
+        path: 'doit',
+        element: <Doit />,
       },
     ],
   },
