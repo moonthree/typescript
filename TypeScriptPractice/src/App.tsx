@@ -14,6 +14,9 @@ function App() {
         <Link to={'/doit'} className="font-bold">
           Doit
         </Link>
+        <Link to={'/myro'} className="font-bold">
+          Myro
+        </Link>
       </div>
       <Outlet />
     </div>

@@ -9,6 +9,7 @@ import Caclulator from './pages/Caclulator';
 import Doit from './pages/Doit';
 import Home from './pages/Home';
 import Map from './pages/Map';
+import Myro from './pages/Myro';
 
 // createBrowerRouter() 함수를 사용하여 라우터를 생성합니다.
 // 라우터는 라우트의 배열을 인자로 받습니다.
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: 'doit',
         element: <Doit />,
+      },
+      {
+        path: 'myro',
+        element: <Myro />,
       },
     ],
   },
